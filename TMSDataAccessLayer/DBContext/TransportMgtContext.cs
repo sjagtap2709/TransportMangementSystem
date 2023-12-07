@@ -33,7 +33,9 @@ public partial class TransportMgtContext : DbContext
 
     public virtual DbSet<VerificationTrip> VerificationTrips { get; set; }
 
-  
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=SOURABH_PC\\SQLEXPRESS;Initial Catalog=transportMgt;Integrated Security=True ; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -177,6 +179,12 @@ public partial class TransportMgtContext : DbContext
 
             entity.ToTable("Vender");
 
+            entity.Property(e => e.Decription)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.ImgPath)
+                .HasMaxLength(200)
+                .IsUnicode(false);
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             entity.Property(e => e.VenderName)
                 .HasMaxLength(30)

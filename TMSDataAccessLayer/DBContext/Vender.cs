@@ -11,6 +11,10 @@ public partial class Vender
 
     public bool? IsActive { get; set; }
 
+    public string? Decription { get; set; }
+
+    public string? ImgPath { get; set; }
+
     public virtual ICollection<Driver> Drivers { get; set; } = new List<Driver>();
 
     public virtual ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();

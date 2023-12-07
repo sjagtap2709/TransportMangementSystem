@@ -17,6 +17,7 @@ namespace TMSBusinessLogicLayer.Mapper
             {
                 userBE = new UserBE()
                 {
+                    UserId = model.UserId,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
@@ -39,6 +40,7 @@ namespace TMSBusinessLogicLayer.Mapper
             {
                 userBE = new User()
                 {
+                    UserId = model.UserId,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
@@ -54,7 +56,6 @@ namespace TMSBusinessLogicLayer.Mapper
             }
             return userBE;
         }
-
         public static IEnumerable<User> Map(this IEnumerable<UserBE> model)
         {
             List<User> users = new List<User>();

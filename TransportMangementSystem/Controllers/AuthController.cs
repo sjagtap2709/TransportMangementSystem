@@ -8,7 +8,7 @@ namespace TransportMangementSystem.Controllers
     public class AuthController : ControllerBase
     {
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<string> Auth()
         {
            return new List<string>() { "sourabh" ,"hari"};
         }

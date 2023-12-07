@@ -1,4 +1,5 @@
 
+using Castle.Components.DictionaryAdapter.Xml;
 using Microsoft.EntityFrameworkCore;
 using TMSDataAccessLayer;
 using TMSDataAccessLayer.DataComponents;
@@ -14,10 +15,14 @@ namespace TransportMangementSystem
             var builder = WebApplication.CreateBuilder(args);
 
 
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddJsonOptions(jsonOptions =>
+            {
+                jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null;
+
+            });
             builder.Services.AddDbContext<TransportMgtContext>(option =>
             {
-                option.UseSqlServer("Server=.\\SQLExpress;Database=TransportMgt;Trusted_Connection=True; TrustServerCertificate=True;");
+                option.UseSqlServer(builder.Configuration.GetConnectionString("DBConnectionstring"));
             });
             builder.Services.AddConfigureServices();
             var app = builder.Build();
@@ -41,6 +46,6 @@ namespace TransportMangementSystem
             app.Run();
         }
 
-       
+
     }
 }

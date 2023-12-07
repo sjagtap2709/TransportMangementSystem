@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model TMSBusinessEntities.UserBE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Login</a>
+    <form asp-controller="Login" asp-action="Index" method="post">
+        @Html.EditorFor(m=>m.Email)
+        @Html.EditorFor(m=>m.Password)
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
